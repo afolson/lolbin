@@ -1,3 +1,15 @@
 machine:
   php:
     version: 5.6.14
+  environment:
+    APP_KEY: fje837whslfjsir8502hsjwuriflvmcn
+    DB_CONNECTION: mysql
+    DB_HOST: localhost
+    DB_PORT: 3306
+    DB_DATABASE: circle_test
+    DB_USERNAME: ubuntu
+    DB_PASSWORD:
+
+dependencies:
+  post:
+    - php artisan migrate --seed
