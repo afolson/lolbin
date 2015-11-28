@@ -18,7 +18,7 @@ $app->get('/', function () use ($app) {
 
 $app->get('/pastes', 'PasteController@index');
 
-$app->post('/pastes', 'PasteController@store');
+$app->post('/pastes', 'PasteController@create');
 
 $app->get('/pastes/{id}', 'PasteController@show');
 

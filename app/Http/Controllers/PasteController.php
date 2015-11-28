@@ -28,9 +28,10 @@ class PasteController extends ApiController {
         return $this->respondWithCORS($data);
     }
 
-    public function store(Request $request)
+    public function create(Request $request)
     {
-        $this->place->body = $request->get('body');
+        $this->paste->body = $request->get('body');
+        $this->paste->save();
         return $this->respondCreated('Paste was created');
     }
 
