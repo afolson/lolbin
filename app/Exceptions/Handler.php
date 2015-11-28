@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
+use App\Http\Controllers\ApiController;
 
 class Handler extends ExceptionHandler
 {
@@ -30,15 +31,16 @@ class Handler extends ExceptionHandler
         return parent::report($e);
     }
 
+
     /**
-     * Render an exception into an HTTP response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $e
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param Exception $e
+     * @return mixed
      */
-    public function render($request, Exception $e)
-    {
-        return parent::render($request, $e);
+    public function render($request, Exception $e) {
+        if ($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
+            $api = new ApiController();
+            return $api->respondNotFound($message = 'Not Found');
+        }
     }
 }
