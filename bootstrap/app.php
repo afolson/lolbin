@@ -2,7 +2,10 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-Dotenv::load(__DIR__.'/../');
+// Use .env if we don't have an environment set
+if (!getenv('APP_ENV') ) {
+    Dotenv::load(__DIR__.'/../');
+}
 
 /*
 |--------------------------------------------------------------------------
