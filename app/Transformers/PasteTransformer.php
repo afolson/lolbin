@@ -7,14 +7,13 @@ class PasteTransformer extends TransformerAbstract
 {
 
     /**
-     * Turn this item object into a generic array
-     *
+     * @param Paste $paste
      * @return array
      */
     public function transform(Paste $paste)
     {
         return [
-            'id'           => (int) $paste->id,
+            'id'           => $paste->id,
             'body'         => $paste->body,
         ];
     }

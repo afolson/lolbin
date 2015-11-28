@@ -2,9 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Paste extends Model {
+class Paste extends UuidModel {
     /**
      * The database table used by the model.
      *
