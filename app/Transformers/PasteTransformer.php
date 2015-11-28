@@ -14,7 +14,9 @@ class PasteTransformer extends TransformerAbstract
     {
         return [
             'id'           => $paste->id,
+            'title'        => $paste->title,
             'body'         => $paste->body,
+            'language'     => $paste->language,
         ];
     }
 

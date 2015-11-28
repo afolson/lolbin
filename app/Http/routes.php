@@ -11,9 +11,9 @@
 |
 */
 
-$app->get('/', function () use ($app) {
-    return $app->welcome();
-});
+//$app->get('/', function () use ($app) {
+//    return $app->welcome();
+//});
 
 $app->get('/pastes', 'PasteController@index');
 $app->post('/pastes', 'PasteController@create');

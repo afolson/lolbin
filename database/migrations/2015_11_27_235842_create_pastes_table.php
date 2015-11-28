@@ -17,6 +17,7 @@ class CreatePastesTable extends Migration
          */
         Schema::create('pastes', function (Blueprint $table) {
             //$table->increments('id');
+            $table->string('title');
             $table->text('body');
             $table->string('language');
             $table->timestamps();

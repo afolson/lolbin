@@ -30,7 +30,9 @@ class PasteController extends ApiController {
 
     public function create(Request $request)
     {
+        $this->paste->title = $request->get('title');
         $this->paste->body = $request->get('body');
+        $this->paste->language = $request->get('language');
         $this->paste->save();
         return $this->respondCreated('Paste was created');
     }
