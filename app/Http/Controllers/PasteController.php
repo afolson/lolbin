@@ -20,13 +20,13 @@ class PasteController extends ApiController {
         $this->paste = $paste;
     }
 
-    public function index(Manager $fractal, PasteTransformer $pasteTransformer)
-    {
-        $pastes = $this->paste->take(10)->get();
-        $collection = new Collection($pastes, $pasteTransformer);
-        $data = $fractal->createData($collection)->toArray();
-        return $this->respondWithCORS($data);
-    }
+     public function index(Manager $fractal, PasteTransformer $pasteTransformer)
+     {
+         $pastes = $this->paste->take(10)->get();
+         $collection = new Collection($pastes, $pasteTransformer);
+         $data = $fractal->createData($collection)->toArray();
+         return $this->respondWithCORS($data);
+     }
 
     public function create(Request $request)
     {
@@ -37,16 +37,22 @@ class PasteController extends ApiController {
 
     /**
      * @param Manager $fractal
-     * @param PlaceTransformer $placeTransformer
+     * @param PasteTransformer $pasteTransformer
      * @param $pasteId
      * @return \Illuminate\Http\JsonResponse
      */
     public function show(Manager $fractal, PasteTransformer $pasteTransformer, $pasteId)
     {
         $paste = $this->paste->find($pasteId);
-        $item = new Item($paste, $pasteTransformer);
-        $data = $fractal->createData($item)->toArray();
-        return $this->respond($data);
+
+        if (!$paste) {
+            return $this->respondNotFound('Not found.');
+        }
+        else {
+            $item = new Item($paste, $pasteTransformer);
+            $data = $fractal->createData($item)->toArray();
+            return $this->respond($data);
+        }
     }
 
     /**
@@ -61,3 +67,52 @@ class PasteController extends ApiController {
     }
 
 }
+
+
+
+
+
+
+
+
+// use App\Transformer\CheckinTransformer;
+// use App\Transformer\PlaceTransformer;
+
+// class PlaceController extends ApiController
+// {
+
+
+//     public function show($placeId)
+//     {
+//         $place = Place::find($placeId);
+
+//         if (! $place) {
+//             return $this->errorNotFound('Place not found');
+//         }
+        
+//         return $this->respondWithItem($place, new PlaceTransformer);
+//     }
+
+//     public function getCheckins($placeId)
+//     {
+//         $place = Place::find($placeId);
+
+//         if (! $place) {
+//             return $this->errorNotFound('Place not found');
+//         }
+
+//         return $this->respondWithCollection($place->checkins, new CheckinTransformer);
+//     }
+
+//     public function uploadImage($placeId)
+//     {
+//         $place = Place::find($placeId);
+
+//         if (! $place) {
+//             return $this->errorNotFound('Place not found');
+//         }
+
+//         exit('This would normally upload an image somewhere but that is hard.');
+//     }
+// }
+
