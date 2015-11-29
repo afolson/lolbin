@@ -1,5 +1,7 @@
 # Lolbin
 
+[![Circle CI](https://circleci.com/gh/afolson/lolbin/tree/master.svg?style=svg)](https://circleci.com/gh/afolson/lolbin/tree/master)
+
 It's Yet Another Pastebin that does SUPER AWESOME THINGS like:
 
 - Allow you to use cURL to create pastes (WOW!)
