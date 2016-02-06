@@ -1,6 +1,6 @@
 # Pastewin
 
-[![Circle CI](https://circleci.com/gh/afolson/lolbin/tree/master.svg?style=svg)](https://circleci.com/gh/afolson/lolbin/tree/master)
+[![Circle CI](https://circleci.com/gh/afolson/pastewin/tree/master.svg?style=svg)](https://circleci.com/gh/afolson/lolbin/tree/master)
 
 It's Yet Another Pastebin that does SUPER AWESOME THINGS like:
 
